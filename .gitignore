@@ -80,4 +80,3 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 package-lock.json
-yarn lock.json //Just to commit false my bro 
