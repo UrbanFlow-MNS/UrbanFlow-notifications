@@ -10,7 +10,7 @@ import { AppService } from './app.service';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost', //process.env.DB_HOST || 'localhost',
-      port: '5432',//parseInt(process.env.DB_PORT || '5432', 10),
+      port: 5432,//parseInt(process.env.DB_PORT || '5432', 10),
       username: 'test',//process.env.DB_USERNAME || 'postgres',
       password: 'test',//process.env.DB_PASSWORD || 'postgres',
       database: 'urbanflow_notifications',//process.env.DB_NAME || 'urbanflow_notifications',

@@ -1,26 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "urbanflow-notifications",
-  "version": "1.0.0",
-  "description": "Microservice de gestion des notifications pour Urban Flow",
-  "main": "dist/main.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/main.js",
-    "start:dev": "ts-node src/main.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
-  },
-  "keywords": ["notifications", "nestjs", "typeorm", "urbanflow"],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@nestjs/common": "^10.0.0",
-    "@nestjs/core": "^10.0.0",
-    "@nestjs/platform-express": "^10.0.0",
-    "@nestjs/typeorm": "^10.0.0",
-    "typeorm": "^0.3.27",
-    "pg": "^8.16.3",
-=======
   "name": "UrbanFlow-notifications",
   "version": "0.0.1",
   "description": "",
@@ -44,18 +22,16 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
->>>>>>> aa408d0d9169d9854428216203c4280d51feb9cf
+    "@nestjs/typeorm": "^11.0.0",
+    "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.27"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/node": "^24.10.1",
-    "typescript": "^5.9.3",
-    "ts-node": "^10.9.2"
-=======
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint/eslintrc": "^3.2.0",
@@ -101,6 +77,5 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
->>>>>>> aa408d0d9169d9854428216203c4280d51feb9cf
   }
 }
