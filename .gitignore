@@ -8,10 +8,6 @@
 logs
 *.log
 npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
 
 # OS
 .DS_Store
@@ -20,12 +16,6 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
-
-# Environment variables
-.env
-*.env
-.env.local
-.env.*.local
 
 # Logs
 logs/
@@ -42,7 +32,7 @@ Thumbs.db
 
 # NestJS specific
 /uploads
-=======
+
 # IDEs and editors
 /.idea
 .project
@@ -60,6 +50,7 @@ Thumbs.db
 !.vscode/extensions.json
 
 # dotenv environment variable files
+*.env
 .env
 .env.development.local
 .env.test.local
