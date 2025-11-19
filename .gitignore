@@ -1,30 +1,4 @@
-<<<<<<< HEAD
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-yarn.lock
 
-# Compiled output
-/dist
-/build
-*.js
-*.js.map
-*.d.ts
-*.d.ts.map
-
-# Exceptions - keep config files
-!*.config.js
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-=======
 # compiled output
 /dist
 /node_modules
@@ -40,16 +14,16 @@ yarn-error.log*
 lerna-debug.log*
 
 # OS
->>>>>>> aa408d0d9169d9854428216203c4280d51feb9cf
 .DS_Store
 
 # Tests
 /coverage
 /.nyc_output
 
-<<<<<<< HEAD
+
 # Environment variables
 .env
+*.env
 .env.local
 .env.*.local
 
@@ -104,4 +78,5 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
->>>>>>> aa408d0d9169d9854428216203c4280d51feb9cf
+
+package-lock.json

@@ -3,25 +3,35 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Notification } from './entities/notification.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
   imports: [
+
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost', //process.env.DB_HOST || 'localhost',
-      port: 5432,//parseInt(process.env.DB_PORT || '5432', 10),
-      username: 'test',//process.env.DB_USERNAME || 'postgres',
-      password: 'test',//process.env.DB_PASSWORD || 'postgres',
-      database: 'urbanflow_notifications',//process.env.DB_NAME || 'urbanflow_notifications',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME, 
       entities: [Notification],
-      synchronize:false,// process.env.NODE_ENV !== 'production',
-      logging: false, //process.env.NODE_ENV !== 'production',
+      synchronize:true, // TODO: set to false in production
+      logging: false,
     }),
+
     TypeOrmModule.forFeature([Notification]),
   ],
+  
   controllers: [AppController],
   providers: [AppService],
 })
+
 
 export class AppModule {}
