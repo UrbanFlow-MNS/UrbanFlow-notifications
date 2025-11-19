@@ -14,10 +14,10 @@ export class Notification {
   @Column()
   recipientUserId: number;
 
-  @Column({ length: 255 })
+  @Column()
   title: string;
 
-  @Column({ type: 'text' })
+  @Column()
   content: string;
 
   @Column({ type: 'enum', enum: NotificationType })
@@ -32,12 +32,12 @@ export class Notification {
   @Column({ type: 'enum', enum: NotificationPriority, default: NotificationPriority.NORMAL })
   priority: NotificationPriority;
 
-  @Column({ length: 100 })
+  @Column()
   sourceMicroservice: string;
 
   @Column()
   sourceEntityId: number;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: 'datetime', nullable: true })
   sentAt: Date | null;
 }

@@ -1,43 +1,21 @@
 {
   "compilerOptions": {
-<<<<<<< HEAD
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["ES2020"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-=======
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2023",
+    "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   }
->>>>>>> aa408d0d9169d9854428216203c4280d51feb9cf
 }
