@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+<<<<<<< HEAD
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Notification } from './entities/notification.entity';
 
@@ -19,5 +20,14 @@ import { Notification } from './entities/notification.entity';
   ],
   controllers: [],
   providers: [],
+=======
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+@Module({
+  imports: [],
+  controllers: [AppController],
+  providers: [AppService],
+>>>>>>> aa408d0d9169d9854428216203c4280d51feb9cf
 })
 export class AppModule {}
