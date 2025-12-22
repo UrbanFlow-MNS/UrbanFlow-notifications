@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Notification } from './entities/notification.entity';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Notification } from './notifications/entities/notification.entity';
 import { ConfigModule } from '@nestjs/config';
+import { NotificationsModule } from './notifications/notifications.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -24,10 +24,10 @@ import { ConfigModule } from '@nestjs/config';
       logging: false,
     }),
 
-    TypeOrmModule.forFeature([Notification]),
+    NotificationsModule,
   ],
 
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
