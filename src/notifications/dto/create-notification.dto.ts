@@ -1,9 +1,5 @@
-import { IsNotEmpty, IsString, IsNumber, IsEnum, IsOptional } from 'class-validator';
-import {
-  NotificationType,
-  NotificationChannel,
-  NotificationPriority,
-} from '../../models/notificationEnums';
+import { IsNotEmpty, IsString, IsNumber, IsEnum, IsOptional} from 'class-validator';
+import { NotificationType, NotificationChannel, NotificationPriority} from '../../models/notificationEnums';
 
 export class CreateNotificationDto {
   @IsNotEmpty()

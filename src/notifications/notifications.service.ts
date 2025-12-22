@@ -13,27 +13,31 @@ export class NotificationsService {
     private readonly notificationRepository: Repository<Notification>,
   ) {}
 
-  async create(createNotificationDto: CreateNotificationDto): Promise<Notification> {
-    const notification = this.notificationRepository.create(createNotificationDto);
+  async create(
+    createNotificationDto: CreateNotificationDto,
+  ) {
+    const notification = this.notificationRepository.create(
+      createNotificationDto,
+    );
     return await this.notificationRepository.save(notification);
   }
 
-  async findAll(): Promise<Notification[]> {
+  async findAll() {
     return await this.notificationRepository.find({
       order: { createdAt: 'DESC' },
     });
   }
 
-  async findByUser(userId: number): Promise<Notification[]> {
+  async findByUser(userId: number) {
     return await this.notificationRepository.find({
       where: { recipientUserId: userId },
       order: { createdAt: 'DESC' },
     });
   }
 
-  async findUnreadByUser(userId: number): Promise<Notification[]> {
+  async findUnreadByUser(userId: number) {
     return await this.notificationRepository.find({
-      where: { 
+      where: {
         recipientUserId: userId,
         readAt: IsNull(),
       },
@@ -41,40 +45,45 @@ export class NotificationsService {
     });
   }
 
-  async findOne(id: number): Promise<Notification> {
-    const notification = await this.notificationRepository.findOne({ where: { id } });
+  async findOne(id: number) {
+    const notification = await this.notificationRepository.findOne({
+      where: { id },
+    });
     if (!notification) {
       throw new NotFoundException(`Notification with ID ${id} not found`);
     }
     return notification;
   }
 
-  async update(id: number, updateNotificationDto: UpdateNotificationDto): Promise<Notification> {
+  async update(
+    id: number,
+    updateNotificationDto: UpdateNotificationDto,
+  ) {
     const notification = await this.findOne(id);
     Object.assign(notification, updateNotificationDto);
     return await this.notificationRepository.save(notification);
   }
 
-  async markAsRead(id: number): Promise<Notification> {
+  async markAsRead(id: number) {
     const notification = await this.findOne(id);
     notification.readAt = new Date();
     return await this.notificationRepository.save(notification);
   }
 
-  async markAsSent(id: number): Promise<Notification> {
+  async markAsSent(id: number) {
     const notification = await this.findOne(id);
     notification.status = NotificationStatus.SENT;
     notification.sentAt = new Date();
     return await this.notificationRepository.save(notification);
   }
 
-  async markAsFailed(id: number): Promise<Notification> {
+  async markAsFailed(id: number) {
     const notification = await this.findOne(id);
     notification.status = NotificationStatus.FAILED;
     return await this.notificationRepository.save(notification);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number) {
     const notification = await this.findOne(id);
     await this.notificationRepository.remove(notification);
   }
