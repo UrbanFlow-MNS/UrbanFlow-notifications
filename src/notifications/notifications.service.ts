@@ -13,9 +13,7 @@ export class NotificationsService {
     private readonly notificationRepository: Repository<Notification>,
   ) {}
 
-  async create(
-    createNotificationDto: CreateNotificationDto,
-  ) {
+  async create(createNotificationDto: CreateNotificationDto) {
     const notification = this.notificationRepository.create(
       createNotificationDto,
     );
@@ -55,10 +53,7 @@ export class NotificationsService {
     return notification;
   }
 
-  async update(
-    id: number,
-    updateNotificationDto: UpdateNotificationDto,
-  ) {
+  async update(id: number, updateNotificationDto: UpdateNotificationDto) {
     const notification = await this.findOne(id);
     Object.assign(notification, updateNotificationDto);
     return await this.notificationRepository.save(notification);

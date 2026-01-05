@@ -33,36 +33,36 @@ export class NotificationsController {
   }
 
   @Get('user/:userId/unread')
-  findUnreadByUser(@Param('userId') userId: string) {
-    return this.notificationsService.findUnreadByUser(+userId);
+  findUnreadByUser(@Param('userId') userId: number) {
+    return this.notificationsService.findUnreadByUser(userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.notificationsService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.notificationsService.findOne(id);
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateNotificationDto: UpdateNotificationDto,
   ) {
-    return this.notificationsService.update(+id, updateNotificationDto);
+    return this.notificationsService.update(id, updateNotificationDto);
   }
 
   @Patch(':id/read')
-  markAsRead(@Param('id') id: string) {
-    return this.notificationsService.markAsRead(+id);
+  markAsRead(@Param('id') id: number) {
+    return this.notificationsService.markAsRead(id);
   }
 
   @Patch(':id/sent')
-  markAsSent(@Param('id') id: string) {
-    return this.notificationsService.markAsSent(+id);
+  markAsSent(@Param('id') id: number) {
+    return this.notificationsService.markAsSent(id);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string) {
-    return this.notificationsService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.notificationsService.remove(id);
   }
 }
