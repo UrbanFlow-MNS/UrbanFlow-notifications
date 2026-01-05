@@ -52,11 +52,11 @@ export class Notification {
   @Column()
   sourceEntityId: number;
 
-  @Column({ type: 'timestamp', nullable: true })
-  sentAt: Date | null;
+  @Column({ nullable: true })
+  sentAt?: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
-  readAt: Date | null;
+  @Column({ nullable: true })
+  readAt?: Date;
 
   @CreateDateColumn()
   createdAt: Date;
