@@ -1,17 +1,5 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import {
-  NotificationType,
-  NotificationChannel,
-  NotificationStatus,
-  NotificationPriority,
-} from '../../models/notificationEnums';
-
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { NotificationType, NotificationChannel, NotificationStatus, NotificationPriority } from '../../models/notificationEnums';
 @Entity('notifications')
 export class Notification {
   @PrimaryGeneratedColumn()
