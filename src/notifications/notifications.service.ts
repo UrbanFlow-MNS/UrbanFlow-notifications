@@ -59,25 +59,6 @@ export class NotificationsService {
     return await this.notificationRepository.save(notification);
   }
 
-  async markAsRead(id: number) {
-    const notification = await this.findOne(id);
-    notification.readAt = new Date();
-    return await this.notificationRepository.save(notification);
-  }
-
-  async markAsSent(id: number) {
-    const notification = await this.findOne(id);
-    notification.status = NotificationStatus.SENT;
-    notification.sentAt = new Date();
-    return await this.notificationRepository.save(notification);
-  }
-
-  async markAsFailed(id: number) {
-    const notification = await this.findOne(id);
-    notification.status = NotificationStatus.FAILED;
-    return await this.notificationRepository.save(notification);
-  }
-
   async remove(id: number) {
     const notification = await this.findOne(id);
     await this.notificationRepository.remove(notification);
