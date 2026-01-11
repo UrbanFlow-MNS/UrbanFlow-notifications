@@ -32,11 +32,6 @@ export class NotificationsController {
     return this.notificationsService.findByUser(+userId);
   }
 
-  @Get('user/:userId/unread')
-  findUnreadByUser(@Param('userId') userId: number) {
-    return this.notificationsService.findUnreadByUser(userId);
-  }
-
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.notificationsService.findOne(id);
