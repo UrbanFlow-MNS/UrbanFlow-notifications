@@ -4,7 +4,6 @@ import { Repository, IsNull } from 'typeorm';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { Notification } from './entities/notification.entity';
-import { NotificationStatus } from '../models/notificationEnums';
 
 @Injectable()
 export class NotificationsService {
