@@ -56,6 +56,7 @@ Thumbs.db
 .env.test.local
 .env.production.local
 .env.local
+.env.docker
 
 # temp directory
 .temp

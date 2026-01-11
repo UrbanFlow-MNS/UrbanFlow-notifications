@@ -1,11 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import {
   NotificationType,
   NotificationChannel,
   NotificationStatus,
   NotificationPriority,
-} from '../models/notificationEnums';
-
+} from '../../models/notificationEnums';
 @Entity('notifications')
 export class Notification {
   @PrimaryGeneratedColumn()
@@ -17,7 +22,7 @@ export class Notification {
   @Column()
   title: string;
 
-  @Column()
+  @Column('text')
   content: string;
 
   @Column({ type: 'enum', enum: NotificationType })
@@ -46,6 +51,9 @@ export class Notification {
   @Column()
   sourceEntityId: number;
 
-  @Column({ type: 'datetime', nullable: true })
-  sentAt: Date | null;
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
