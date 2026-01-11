@@ -32,16 +32,6 @@ export class NotificationsService {
     });
   }
 
-  async findUnreadByUser(userId: number) {
-    return await this.notificationRepository.find({
-      where: {
-        recipientUserId: userId,
-        readAt: IsNull(),
-      },
-      order: { createdAt: 'DESC' },
-    });
-  }
-
   async findOne(id: number) {
     const notification = await this.notificationRepository.findOne({
       where: { id },
