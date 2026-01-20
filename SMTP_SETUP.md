@@ -1,10 +1,10 @@
 # Configuration SMTP Gmail pour UrbanFlow Notifications
 
-## 📧 Qu'est-ce que SMTP ?
+## Qu'est-ce que SMTP ?
 
 **SMTP (Simple Mail Transfer Protocol)** est le protocole standard pour envoyer des emails. Il permet à votre microservice d'envoyer automatiquement des notifications par email aux utilisateurs.
 
-## 🔐 Configuration Gmail (Gratuit)
+## Configuration Gmail (Gratuit)
 
 ### Étape 1 : Activer la validation en 2 étapes
 
@@ -49,7 +49,7 @@
    - `SMTP_PASSWORD` = le App Password généré (16 caractères, avec ou sans espaces)
    - `SMTP_FROM_EMAIL` = la même adresse que SMTP_USER
 
-## 🚀 Utilisation
+## Utilisation
 
 ### Envoyer un email de notification
 
@@ -83,31 +83,30 @@ await this.notificationsService.sendEmailNotification(
 );
 ```
 
-## 📊 Limites Gmail Gratuites
+## Limites Gmail Gratuites
 
 - **500 emails par jour** avec un compte Gmail gratuit
 - **2000 emails par jour** avec Google Workspace (payant)
 
-## ⚠️ Sécurité
+## Sécurité
 
 1. **Ne commitez JAMAIS** votre fichier `.env` sur Git
 2. Le `.env` est déjà dans `.gitignore`
 3. Utilisez `.env.example` comme template (sans vraies valeurs)
 4. Pour la production, utilisez des variables d'environnement sécurisées
 
-## 🔍 Tests
+## Tests
 
 Pour tester l'envoi d'email, vous pouvez utiliser :
 
 ```bash
-# Lancer l'application
-npm run start:dev
+ npm run start:dev
 
 # Puis faire une requête POST pour créer une notification
 # et appelez la méthode sendEmailNotification
 ```
 
-## ❓ Problèmes fréquents
+## Problèmes fréquents
 
 ### "Invalid login: 535-5.7.8 Username and Password not accepted"
 - Vérifiez que la validation en 2 étapes est activée
