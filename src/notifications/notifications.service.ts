@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, IsNull } from 'typeorm';
+import { Repository } from 'typeorm';
 import { MailerService } from '@nestjs-modules/mailer';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
@@ -55,7 +55,10 @@ export class NotificationsService {
     await this.notificationRepository.remove(notification);
   }
 
-  async sendEmailNotification(recipientEmail: string, notification: Notification) {
+  async sendEmailNotification(
+    recipientEmail: string,
+    notification: Notification,
+  ) {
     try {
       await this.mailerService.sendMail({
         to: recipientEmail,
@@ -71,7 +74,7 @@ export class NotificationsService {
       });
     } catch (err) {
       console.log('Erreur envoi email:', err);
-      throw new Error('Impossible d\'envoyer l\'email');
+      throw new Error("Impossible d'envoyer l'email");
     }
   }
 }

@@ -52,7 +52,7 @@ export class NotificationsController {
     return this.notificationsService.remove(id);
   }
 
-  @Post('send-email') 
+  @Post('send-email')
   async sendEmail(@Body() sendEmailDto: SendEmailNotificationDto) {
     const notification = await this.notificationsService.findOne(
       sendEmailDto.notificationId,
