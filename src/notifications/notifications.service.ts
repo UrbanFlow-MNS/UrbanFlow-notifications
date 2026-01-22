@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, IsNull } from 'typeorm';
+import { Repository } from 'typeorm';
+import { MailerService } from '@nestjs-modules/mailer';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { Notification } from './entities/notification.entity';
@@ -10,6 +11,7 @@ export class NotificationsService {
   constructor(
     @InjectRepository(Notification)
     private readonly notificationRepository: Repository<Notification>,
+    private readonly mailerService: MailerService,
   ) {}
 
   async create(createNotificationDto: CreateNotificationDto) {
@@ -51,5 +53,28 @@ export class NotificationsService {
   async remove(id: number) {
     const notification = await this.findOne(id);
     await this.notificationRepository.remove(notification);
+  }
+
+  async sendEmailNotification(
+    recipientEmail: string,
+    notification: Notification,
+  ) {
+    try {
+      await this.mailerService.sendMail({
+        to: recipientEmail,
+        subject: notification.title,
+        html: `
+          <div style="padding: 15px; font-family: Arial;">
+            <h2>${notification.title}</h2>
+            <p>${notification.content}</p>
+            <hr>
+            <small>Type: ${notification.type} - Priorité: ${notification.priority}</small>
+          </div>
+        `,
+      });
+    } catch (err) {
+      console.log('Erreur envoi email:', err);
+      throw new Error("Impossible d'envoyer l'email");
+    }
   }
 }
