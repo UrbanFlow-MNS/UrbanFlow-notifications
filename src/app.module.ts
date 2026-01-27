@@ -48,16 +48,16 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     NotificationsModule,
 
     ClientsModule.register([
-          {
-              name: 'NOTIFICATION_SERVICE',
-              transport: Transport.RMQ,
-              options: {
-                  urls: [process.env.RABBIT_MQ ?? ''],
-                  queue: 'NOTIFICATION_QUEUE',
-                  queueOptions: { durable: false },
-              },
-          }
-      ])
+      {
+        name: 'NOTIFICATION_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: [process.env.RABBIT_MQ ?? ''],
+          queue: 'NOTIFICATION_QUEUE',
+          queueOptions: { durable: false },
+        },
+      },
+    ]),
   ],
 
   controllers: [AppController],

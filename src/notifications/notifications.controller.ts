@@ -67,9 +67,4 @@ export class NotificationsController {
       recipientEmail: sendEmailDto.recipientEmail,
     };
   }
-
-  @MessagePattern('')
-  async handleSendNotification(@Payload() data: any) {
-    const {} = data;
-  }
 }
