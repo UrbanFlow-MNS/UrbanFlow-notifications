@@ -13,7 +13,6 @@ import { NotificationsService } from './notifications.service';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { SendEmailNotificationDto } from './dto/send-email-notification.dto';
-import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller('notifications')
 export class NotificationsController {
@@ -65,6 +64,5 @@ export class NotificationsController {
     return {
       message: 'Email sent successfully',
       recipientEmail: sendEmailDto.recipientEmail,
-    };
-  }
+    };  }
 }
