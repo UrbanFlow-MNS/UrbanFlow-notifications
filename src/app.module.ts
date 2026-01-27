@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NotificationsModule } from './notifications/notifications.module';
 import { AppController } from './app.controller';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
@@ -45,6 +46,18 @@ import { MailerModule } from '@nestjs-modules/mailer';
     }),
 
     NotificationsModule,
+
+    ClientsModule.register([
+          {
+              name: 'NOTIFICATION_SERVICE',
+              transport: Transport.RMQ,
+              options: {
+                  urls: [process.env.RABBIT_MQ ?? ''],
+                  queue: 'NOTIFICATION_QUEUE',
+                  queueOptions: { durable: false },
+              },
+          }
+      ])
   ],
 
   controllers: [AppController],
