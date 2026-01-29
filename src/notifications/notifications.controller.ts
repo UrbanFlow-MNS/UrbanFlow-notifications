@@ -70,7 +70,7 @@ export class NotificationsController {
   }
 
   @MessagePattern('notification.sendEmail')
-  async handleSendEmail(@Payload() payload: SendEmailBody) {
-    return await this.notificationsService.handleEmailMessage(payload);
+  handleSendEmail(@Payload() payload: SendEmailBody) {
+    return this.notificationsService.handleEmailMessage(payload);
   }
 }
