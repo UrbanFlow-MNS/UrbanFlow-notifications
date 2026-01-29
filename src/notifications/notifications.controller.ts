@@ -66,7 +66,8 @@ export class NotificationsController {
     return {
       message: 'Email sent successfully',
       recipientEmail: sendEmailDto.recipientEmail,
-    };  }
+    };
+  }
 
   @MessagePattern('notification.sendEmail')
   async handleSendEmail(@Payload() payload: SendEmailBody) {

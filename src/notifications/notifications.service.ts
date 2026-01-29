@@ -79,7 +79,7 @@ export class NotificationsService {
     }
   }
 
-  async handleEmailMessage(payload: SendEmailBody) {
+  handleEmailMessage(payload: SendEmailBody) {
     console.log('Email:', payload.email);
     console.log('Objet:', payload.object);
     console.log('Body:', payload.body);
