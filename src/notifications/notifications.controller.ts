@@ -9,10 +9,12 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 import { NotificationsService } from './notifications.service';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { SendEmailNotificationDto } from './dto/send-email-notification.dto';
+import { SendEmailBody } from './dto/send-email.dto';
 
 @Controller('notifications')
 export class NotificationsController {
@@ -65,5 +67,10 @@ export class NotificationsController {
       message: 'Email sent successfully',
       recipientEmail: sendEmailDto.recipientEmail,
     };
+  }
+
+  @MessagePattern('notification.sendEmail')
+  handleSendEmail(@Payload() payload: SendEmailBody) {
+    return this.notificationsService.handleEmailMessage(payload);
   }
 }

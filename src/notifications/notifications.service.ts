@@ -5,6 +5,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { Notification } from './entities/notification.entity';
+import { SendEmailBody } from './dto/send-email.dto';
 
 @Injectable()
 export class NotificationsService {
@@ -76,5 +77,18 @@ export class NotificationsService {
       console.log('Erreur envoi email:', err);
       throw new Error("Impossible d'envoyer l'email");
     }
+  }
+
+  handleEmailMessage(payload: SendEmailBody) {
+    console.log('Email:', payload.email);
+    console.log('Objet:', payload.object);
+    console.log('Body:', payload.body);
+    console.log('Timestamp:', new Date().toISOString());
+
+    return {
+      success: true,
+      message: 'Message reçu et loggé avec succès',
+      timestamp: new Date().toISOString(),
+    };
   }
 }
