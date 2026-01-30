@@ -1,20 +1,20 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-  HttpStatus,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpCode,
+    HttpStatus,
+    Param,
+    Patch,
+    Post,
 } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
-import { NotificationsService } from './notifications.service';
+import { EventPattern, Payload } from '@nestjs/microservices';
 import { CreateNotificationDto } from './dto/create-notification.dto';
-import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { SendEmailNotificationDto } from './dto/send-email-notification.dto';
 import { SendEmailBody } from './dto/send-email.dto';
+import { UpdateNotificationDto } from './dto/update-notification.dto';
+import { NotificationsService } from './notifications.service';
 
 @Controller('notifications')
 export class NotificationsController {
@@ -69,7 +69,7 @@ export class NotificationsController {
     };
   }
 
-  @MessagePattern('notification.sendEmail')
+  @EventPattern('notifications.sendEmail')
   handleSendEmail(@Payload() payload: SendEmailBody) {
     return this.notificationsService.handleEmailMessage(payload);
   }
