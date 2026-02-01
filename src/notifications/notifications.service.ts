@@ -79,16 +79,23 @@ export class NotificationsService {
     }
   }
 
-  handleEmailMessage(payload: SendEmailBody) {
-    console.log('Email:', payload.email);
-    console.log('Objet:', payload.object);
-    console.log('Body:', payload.body);
-    console.log('Timestamp:', new Date().toISOString());
-
-    return {
-      success: true,
-      message: 'Message reçu et loggé avec succès',
-      timestamp: new Date().toISOString(),
-    };
+  async handleEmailMessage(payload: SendEmailBody) {
+    try {
+      console.log('Envoi email à:', payload.email);
+      await this.mailerService.sendMail({
+        to: payload.email,
+        subject: payload.object,
+        html: `
+          <div style="padding: 15px; font-family: Arial;">
+            <h2>${payload.object}</h2>
+            <p>${payload.body}</p>
+          </div>
+        `,
+      });
+      console.log('Email envoyé avec succès à:', payload.email);
+    } catch (err) {
+      console.log('Erreur envoi email:', err);
+      throw new Error("Impossible d'envoyer l'email");
+    }
   }
 }
