@@ -6,6 +6,8 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { AppController } from './app.controller';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { PrometheusController } from './prometheus/prometheus.controller';
+import { PrometheusService } from './prometheus/prometheus.service';
 
 @Module({
   imports: [
@@ -60,7 +62,13 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ]),
   ],
 
-  controllers: [AppController],
-  providers: [],
+  controllers: [AppController, PrometheusController],
+  providers: [
+      PrometheusService,
+    {
+      provide: 'IPrometheusService',
+      useClass: PrometheusService,
+    },
+  ],
 })
 export class AppModule {}
