@@ -1,13 +1,13 @@
 import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    HttpCode,
-    HttpStatus,
-    Param,
-    Patch,
-    Post,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
 import { EventPattern, Payload } from '@nestjs/microservices';
 import { CreateNotificationDto } from './dto/create-notification.dto';
