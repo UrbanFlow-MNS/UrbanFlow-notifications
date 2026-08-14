@@ -64,7 +64,7 @@ import { PrometheusService } from './prometheus/prometheus.service';
 
   controllers: [AppController, PrometheusController],
   providers: [
-      PrometheusService,
+    PrometheusService,
     {
       provide: 'IPrometheusService',
       useClass: PrometheusService,
